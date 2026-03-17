@@ -1,6 +1,6 @@
-# 🏋️ Nercessian's PR Tracker
+# Nercessian's PR Tracker
 
-A dark-themed desktop app for tracking gym personal records — built with **Electron + React**.
+A desktop app for tracking gym personal records — built with **Electron + React**.
 Log PRs, visualize progress over time, and track body weight changes. Fully offline, no account needed.
 
 ---
@@ -76,8 +76,4 @@ All data is stored locally at:
 %APPDATA%\pr-tracker-data\config.json
 ```
 
-No data ever leaves your machine.
-
----
-
-## Made by Paul Nercessian
+No data ever leaves your device.
