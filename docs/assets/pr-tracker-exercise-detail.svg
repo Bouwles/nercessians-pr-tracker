@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Exercise detail preview</title>
+  <desc id="desc">An exercise detail screen showing a bench press chart, best lift summary, and logged PR history.</desc>
+  <rect width="1200" height="720" fill="#09090b"/>
+  <rect x="42" y="40" width="1116" height="640" rx="24" fill="#141416" stroke="#27272a"/>
+  <rect x="74" y="78" width="44" height="44" rx="12" fill="#ef4444"/>
+  <text x="140" y="105" fill="#fafafa" font-family="Inter, Segoe UI, Arial" font-size="18" font-weight="800">Bench Press (Barbell)</text>
+  <text x="140" y="132" fill="#a1a1aa" font-family="Inter, Segoe UI, Arial" font-size="14">Chest</text>
+  <rect x="952" y="82" width="126" height="42" rx="12" fill="#dc2626"/>
+  <text x="990" y="109" fill="#fff" font-family="Inter, Segoe UI, Arial" font-size="14" font-weight="800">Log PR</text>
+  <g font-family="Inter, Segoe UI, Arial">
+    <text x="86" y="198" fill="#71717a" font-size="13">All-Time Best</text>
+    <text x="86" y="236" fill="#fafafa" font-size="38" font-weight="800">245 <tspan fill="#a1a1aa" font-size="18">lbs</tspan></text>
+    <text x="326" y="198" fill="#71717a" font-size="13">Estimated 1RM</text>
+    <text x="326" y="236" fill="#f87171" font-size="38" font-weight="800">277.7 <tspan fill="#a1a1aa" font-size="18">lbs</tspan></text>
+    <text x="616" y="198" fill="#71717a" font-size="13">Total Entries</text>
+    <text x="616" y="236" fill="#fafafa" font-size="38" font-weight="800">14</text>
+  </g>
+  <rect x="86" y="292" width="1028" height="214" rx="18" fill="#1a1a1d" stroke="#27272a"/>
+  <text x="118" y="334" fill="#fafafa" font-family="Inter, Segoe UI, Arial" font-size="17" font-weight="800">Progress Over Time</text>
+  <g stroke="#27272a" stroke-width="1">
+    <path d="M118 466 H1078"/>
+    <path d="M118 426 H1078"/>
+    <path d="M118 386 H1078"/>
+    <path d="M118 346 H1078"/>
+  </g>
+  <path d="M128 456 C212 438 246 446 320 414 C392 384 458 404 538 366 C610 332 690 374 760 342 C846 304 928 322 1066 278" fill="none" stroke="#ef4444" stroke-width="5"/>
+  <g fill="#ef4444">
+    <circle cx="128" cy="456" r="6"/>
+    <circle cx="320" cy="414" r="6"/>
+    <circle cx="538" cy="366" r="6"/>
+    <circle cx="760" cy="342" r="6"/>
+    <circle cx="1066" cy="278" r="6"/>
+  </g>
+  <rect x="86" y="540" width="1028" height="106" rx="18" fill="#1a1a1d" stroke="#27272a"/>
+  <g font-family="Inter, Segoe UI, Arial" font-size="14">
+    <text x="118" y="580" fill="#71717a" font-weight="800">Date</text>
+    <text x="358" y="580" fill="#71717a" font-weight="800">Weight</text>
+    <text x="568" y="580" fill="#71717a" font-weight="800">Reps</text>
+    <text x="766" y="580" fill="#71717a" font-weight="800">Est. 1RM</text>
+    <text x="118" y="622" fill="#fafafa">Aug 24, 2026</text>
+    <text x="358" y="622" fill="#fafafa" font-weight="800">245 lbs</text>
+    <text x="568" y="622" fill="#fafafa">4</text>
+    <text x="766" y="622" fill="#f87171" font-weight="800">277.7</text>
+    <rect x="840" y="602" width="46" height="22" rx="7" fill="#ef444422"/>
+    <text x="851" y="618" fill="#f87171" font-size="11" font-weight="900">BEST</text>
+  </g>
+</svg>
