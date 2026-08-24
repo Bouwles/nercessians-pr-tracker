@@ -3,6 +3,13 @@ import { useState } from 'react';
 import { useStore } from '../contexts/StoreContext';
 import { todayStr } from '../utils/calculations';
 
+function unitButtonClass(active) {
+  const base = 'px-3 py-2.5 text-sm font-medium transition-colors';
+  return active
+    ? `${base} bg-red-600 text-white`
+    : `${base} text-zinc-400 hover:text-white`;
+}
+
 export default function WeightLogModal({ onClose, defaultUnit = 'lbs' }) {
   const { addWeightLog } = useStore();
   const [value, setValue] = useState('');
@@ -71,9 +78,7 @@ export default function WeightLogModal({ onClose, defaultUnit = 'lbs' }) {
                     key={u}
                     type="button"
                     onClick={() => setUnit(u)}
-                    className={`px-3 py-2.5 text-sm font-medium transition-colors ${
-                      unit === u ? 'bg-red-600 text-white' : 'text-zinc-400 hover:text-white'
-                    }`}
+                    className={unitButtonClass(unit === u)}
                   >
                     {u}
                   </button>

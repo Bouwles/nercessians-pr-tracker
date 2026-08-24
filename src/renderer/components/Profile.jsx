@@ -18,6 +18,13 @@ function CustomTooltip({ active, payload }) {
   );
 }
 
+function unitButtonClass(active) {
+  const base = 'px-3 py-2.5 text-sm font-medium transition-colors';
+  return active
+    ? `${base} bg-red-600 text-white`
+    : `${base} text-zinc-400 hover:text-white`;
+}
+
 export default function Profile() {
   const { profile, updateProfile, reloadData } = useStore();
   const [showWeightModal, setShowWeightModal] = useState(false);
@@ -176,9 +183,7 @@ export default function Profile() {
                       key={u}
                       type="button"
                       onClick={() => set('heightUnit', u)}
-                      className={`px-3 py-2.5 text-sm font-medium transition-colors ${
-                        form.heightUnit === u ? 'bg-red-600 text-white' : 'text-zinc-400 hover:text-white'
-                      }`}
+                      className={unitButtonClass(form.heightUnit === u)}
                     >
                       {u}
                     </button>

@@ -50,6 +50,13 @@ function ExerciseRow({ exercise, onClick }) {
   );
 }
 
+function filterButtonClass(active) {
+  const base = 'px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors flex-shrink-0';
+  return active
+    ? `${base} bg-red-600 text-white`
+    : `${base} bg-zinc-800 text-zinc-400 hover:text-white`;
+}
+
 export default function ExerciseLibrary({ onSelectExercise }) {
   const { exercises } = useStore();
   const [search, setSearch] = useState('');
@@ -141,9 +148,7 @@ export default function ExerciseLibrary({ onSelectExercise }) {
         <div className="flex items-center gap-2 overflow-x-auto pb-1">
           <button
             onClick={() => setActiveCategory('All')}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors flex-shrink-0 ${
-              activeCategory === 'All' ? 'bg-red-600 text-white' : 'bg-zinc-800 text-zinc-400 hover:text-white'
-            }`}
+            className={filterButtonClass(activeCategory === 'All')}
           >
             All
           </button>
