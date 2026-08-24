@@ -5,7 +5,7 @@ import {
 } from 'recharts';
 import { useStore } from '../contexts/StoreContext';
 import {
-  countPRsThisMonth, getRecentlyUpdated, buildChartData, formatDate, getBestPR, generateCSV, totalTrainingVolume,
+  countCurrentPRStreakDays, countPRsThisMonth, getRecentlyUpdated, buildChartData, formatDate, getBestPR, generateCSV, totalTrainingVolume,
 } from '../utils/calculations';
 import { CATEGORY_COLORS } from '../data/exercises';
 
@@ -67,6 +67,7 @@ export default function Dashboard({ onNavigate }) {
   const recent = getRecentlyUpdated(exercises, 5);
   const totalPRs = exercises.reduce((s, e) => s + (e.prs?.length || 0), 0);
   const volume = totalTrainingVolume(exercises);
+  const streakDays = countCurrentPRStreakDays(exercises);
 
   const spotlightExercises = SPOTLIGHT.map(name =>
     exercises.find(e => e.name === name)
@@ -114,7 +115,7 @@ export default function Dashboard({ onNavigate }) {
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-5 gap-4 mb-6">
         {[
           {
             label: 'Total Exercises',
@@ -139,6 +140,12 @@ export default function Dashboard({ onNavigate }) {
             value: volume > 0 ? volume.toLocaleString() : '—',
             color: 'text-amber-400',
             icon: 'VOL',
+          },
+          {
+            label: 'PR Streak',
+            value: `${streakDays}d`,
+            color: 'text-purple-400',
+            icon: 'STR',
           },
         ].map(card => (
           <div key={card.label} className="bg-surface-700 rounded-xl p-4 border border-zinc-800/60">
