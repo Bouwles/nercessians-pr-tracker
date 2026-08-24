@@ -10,6 +10,19 @@ export function epley1RM(weight, reps) {
   return Math.round(weight * (1 + reps / 30) * 10) / 10;
 }
 
+export function trainingVolume(entry) {
+  const weight = Number(entry?.weight);
+  const reps = Number(entry?.reps);
+  if (!Number.isFinite(weight) || !Number.isFinite(reps) || weight <= 0 || reps <= 0) return 0;
+  return Math.round(weight * reps * 10) / 10;
+}
+
+export function totalTrainingVolume(exercises) {
+  return (exercises || []).reduce((sum, exercise) => {
+    return sum + (exercise.prs || []).reduce((exerciseSum, entry) => exerciseSum + trainingVolume(entry), 0);
+  }, 0);
+}
+
 /**
  * Convert weight between kg and lbs.
  */
