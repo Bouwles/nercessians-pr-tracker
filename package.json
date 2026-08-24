@@ -7,14 +7,17 @@
     "start": "concurrently \"npm run webpack:dev\" \"wait-on file:dist/index.html && electron .\"",
     "webpack:dev": "webpack --watch --mode development",
     "webpack:build": "webpack --mode production",
-    "build": "npm run webpack:build && electron-builder --win",
+    "build": "npm run webpack:build && electron-builder --win nsis portable",
     "pack": "npm run webpack:build && electron-builder --win --dir"
   },
   "build": {
     "appId": "com.nercessian.prtracker",
     "productName": "Nercessian's PR Tracker",
     "win": {
-      "target": [{ "target": "nsis", "arch": ["x64"] }]
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
     },
     "nsis": {
       "oneClick": false,
