@@ -19,7 +19,7 @@ function CustomTooltip({ active, payload }) {
 }
 
 export default function Profile() {
-  const { profile, updateProfile } = useStore();
+  const { profile, updateProfile, reloadData } = useStore();
   const [showWeightModal, setShowWeightModal] = useState(false);
   const [backupStatus, setBackupStatus] = useState('');
 
@@ -57,6 +57,18 @@ export default function Profile() {
     setBackupStatus('');
     const result = await window.electronAPI.exportBackup();
     setBackupStatus(result?.success ? 'Backup exported.' : 'Backup was not exported.');
+    setTimeout(() => setBackupStatus(''), 2400);
+  }
+
+  async function handleBackupImport() {
+    setBackupStatus('');
+    const result = await window.electronAPI.importBackup();
+    if (result?.success) {
+      await reloadData();
+      setBackupStatus('Backup imported.');
+    } else {
+      setBackupStatus(result?.error || 'Backup was not imported.');
+    }
     setTimeout(() => setBackupStatus(''), 2400);
   }
 
@@ -104,12 +116,20 @@ export default function Profile() {
             <p className="text-sm text-zinc-500 mt-1">Save a JSON copy of your profile, exercises, PRs, and body-weight log.</p>
             {backupStatus && <p className="text-xs text-emerald-400 mt-2">{backupStatus}</p>}
           </div>
-          <button
-            onClick={handleBackupExport}
-            className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg text-sm font-medium transition-colors border border-zinc-700"
-          >
-            Export Backup
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={handleBackupImport}
+              className="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white rounded-lg text-sm font-medium transition-colors border border-zinc-700"
+            >
+              Import
+            </button>
+            <button
+              onClick={handleBackupExport}
+              className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg text-sm font-medium transition-colors border border-zinc-700"
+            >
+              Export
+            </button>
+          </div>
         </div>
 
         {/* Profile form */}
