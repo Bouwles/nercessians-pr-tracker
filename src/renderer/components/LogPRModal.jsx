@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useStore } from '../contexts/StoreContext';
 import { todayStr } from '../utils/calculations';
 
+const MAX_NOTE_LENGTH = 180;
+
 export default function LogPRModal({ exercise, onClose, editEntry }) {
   const { logPR, editPR } = useStore();
   const isEdit = !!editEntry;
@@ -29,6 +31,10 @@ export default function LogPRModal({ exercise, onClose, editEntry }) {
     }
     if (parseFloat(form.weight) <= 0 || parseInt(form.reps, 10) <= 0) {
       setError('Weight and reps must be positive numbers.');
+      return;
+    }
+    if (form.note.length > MAX_NOTE_LENGTH) {
+      setError(`Notes must be ${MAX_NOTE_LENGTH} characters or less.`);
       return;
     }
     setSaving(true);
@@ -121,10 +127,12 @@ export default function LogPRModal({ exercise, onClose, editEntry }) {
             <textarea
               value={form.note}
               onChange={e => set('note', e.target.value)}
+              maxLength={MAX_NOTE_LENGTH}
               placeholder="e.g. Felt strong today, paused at bottom"
               rows={2}
               className="w-full bg-surface-600 border border-zinc-700 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-red-500 transition-colors resize-none"
             />
+            <p className="text-[11px] text-zinc-600 mt-1 text-right">{form.note.length}/{MAX_NOTE_LENGTH}</p>
           </div>
 
           {error && <p className="text-xs text-red-400">{error}</p>}
