@@ -5,7 +5,7 @@ import {
 } from 'recharts';
 import { useStore } from '../contexts/StoreContext';
 import {
-  countCurrentPRStreakDays, countPRsThisMonth, getRecentlyUpdated, buildChartData, formatDate, getBestPR, generateCSV, totalTrainingVolume,
+  countCurrentPRStreakDays, countPRsInLastDays, countPRsThisMonth, getRecentlyUpdated, buildChartData, formatDate, getBestPR, generateCSV, totalTrainingVolume,
 } from '../utils/calculations';
 import { CATEGORY_COLORS } from '../data/exercises';
 
@@ -68,6 +68,7 @@ export default function Dashboard({ onNavigate }) {
   const totalPRs = exercises.reduce((s, e) => s + (e.prs?.length || 0), 0);
   const volume = totalTrainingVolume(exercises);
   const streakDays = countCurrentPRStreakDays(exercises);
+  const prsThisWeek = countPRsInLastDays(exercises, 7);
 
   const spotlightExercises = SPOTLIGHT.map(name =>
     exercises.find(e => e.name === name)
@@ -98,7 +99,7 @@ export default function Dashboard({ onNavigate }) {
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
             {prsThisMonth > 0
-              ? `You've logged ${prsThisMonth} PR${prsThisMonth !== 1 ? 's' : ''} this month. Keep grinding! 💪`
+              ? `You've logged ${prsThisMonth} PR${prsThisMonth !== 1 ? 's' : ''} this month, including ${prsThisWeek} in the last 7 days.`
               : 'No PRs logged this month yet — time to hit the gym!'}
           </p>
         </div>
