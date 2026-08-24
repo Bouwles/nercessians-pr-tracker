@@ -102,3 +102,25 @@ ipcMain.handle('export:backup', async () => {
     return { success: false, error: err.message };
   }
 });
+
+ipcMain.handle('import:backup', async () => {
+  const result = await dialog.showOpenDialog(mainWindow, {
+    title: 'Import PR Tracker Backup',
+    properties: ['openFile'],
+    filters: [{ name: 'JSON Files', extensions: ['json'] }],
+  });
+
+  if (result.canceled || !result.filePaths?.[0]) return { success: false };
+
+  try {
+    const parsed = JSON.parse(fs.readFileSync(result.filePaths[0], 'utf8'));
+    if (!parsed || typeof parsed !== 'object' || !Array.isArray(parsed.exercises)) {
+      return { success: false, error: 'Backup file is missing exercise data.' };
+    }
+    store.set('profile', parsed.profile || null);
+    store.set('exercises', parsed.exercises);
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+});

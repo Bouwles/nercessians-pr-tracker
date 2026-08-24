@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   exportCSV: (csvContent, defaultFilename) =>
     ipcRenderer.invoke('export:csv', csvContent, defaultFilename),
   exportBackup: () => ipcRenderer.invoke('export:backup'),
+  importBackup: () => ipcRenderer.invoke('import:backup'),
 
   // ── Window controls ───────────────────────────────────────────────────────
   minimizeWindow: () => ipcRenderer.send('window:minimize'),
