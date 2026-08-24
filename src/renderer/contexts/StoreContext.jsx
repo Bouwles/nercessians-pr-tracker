@@ -84,7 +84,8 @@ export function StoreProvider({ children }) {
     const updated = exercises.map(ex => {
       if (ex.id !== exerciseId) return ex;
       const newPR = { id: uuidv4(), date, weight: parseFloat(weight), weightUnit, reps: parseInt(reps, 10), note: note || '' };
-      return { ...ex, prs: [...(ex.prs || []), newPR] };
+      const prs = [...(ex.prs || []), newPR].sort((a, b) => a.date.localeCompare(b.date));
+      return { ...ex, prs };
     });
     return saveExercises(updated);
   }, [exercises, saveExercises]);
