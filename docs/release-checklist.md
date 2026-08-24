@@ -19,6 +19,9 @@ Expected output in `release/`:
 
 - `Nercessian's PR Tracker Setup *.exe` for the installer.
 - `Nercessian's PR Tracker *.exe` for the portable app.
+- `Nercessians-PR-Tracker-*-windows-portable.zip` as a no-install fallback containing the runnable app folder.
+
+If Electron Builder fails while unpacking `winCodeSign` with a Windows symlink permission error, the app may still be available under `release/win-unpacked/`. Zip that folder and publish the zip as the portable release. Users can extract it and run `Nercessian's PR Tracker.exe`.
 
 ## Publish
 
