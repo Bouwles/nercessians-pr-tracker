@@ -122,19 +122,19 @@ export default function Dashboard({ onNavigate }) {
             label: 'Total Exercises',
             value: exercises.length,
             color: 'text-blue-400',
-            icon: '🏋️',
+            icon: 'EX',
           },
           {
             label: 'Total PRs Logged',
             value: totalPRs,
             color: 'text-red-400',
-            icon: '🏆',
+            icon: 'PR',
           },
           {
             label: 'PRs This Month',
             value: prsThisMonth,
             color: 'text-emerald-400',
-            icon: '📈',
+            icon: 'MO',
           },
           {
             label: 'Logged Volume',
@@ -151,7 +151,7 @@ export default function Dashboard({ onNavigate }) {
         ].map(card => (
           <div key={card.label} className="bg-surface-700 rounded-xl p-4 border border-zinc-800/60">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-lg">{card.icon}</span>
+              <span className="text-[10px] font-black tracking-wider text-zinc-500">{card.icon}</span>
               <span className={`text-xl font-bold ${card.color}`}>{card.value}</span>
             </div>
             <p className="text-xs text-zinc-500">{card.label}</p>
