@@ -103,9 +103,11 @@ export function StoreProvider({ children }) {
       if (ex.id !== exerciseId) return ex;
       return {
         ...ex,
-        prs: ex.prs.map(p =>
-          p.id === prId ? { ...p, ...fields, weight: parseFloat(fields.weight ?? p.weight), reps: parseInt(fields.reps ?? p.reps, 10) } : p
-        ),
+        prs: ex.prs
+          .map(p =>
+            p.id === prId ? { ...p, ...fields, weight: parseFloat(fields.weight ?? p.weight), reps: parseInt(fields.reps ?? p.reps, 10) } : p
+          )
+          .sort((a, b) => a.date.localeCompare(b.date)),
       };
     });
     return saveExercises(updated);
