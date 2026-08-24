@@ -17,6 +17,10 @@ export default function WeightLogModal({ onClose, defaultUnit = 'lbs' }) {
       setError('Please enter a valid weight.');
       return;
     }
+    if (date > todayStr()) {
+      setError('Weight date cannot be in the future.');
+      return;
+    }
     setSaving(true);
     await addWeightLog(parseFloat(value), unit, date);
     setSaving(false);
@@ -41,6 +45,7 @@ export default function WeightLogModal({ onClose, defaultUnit = 'lbs' }) {
             <input
               type="date"
               value={date}
+              max={todayStr()}
               onChange={e => setDate(e.target.value)}
               className="w-full bg-surface-600 border border-zinc-700 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-red-500 transition-colors"
               style={{ colorScheme: 'dark' }}
