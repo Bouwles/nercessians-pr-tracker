@@ -5,7 +5,7 @@ import {
 } from 'recharts';
 import { useStore } from '../contexts/StoreContext';
 import {
-  countPRsThisMonth, getRecentlyUpdated, buildChartData, epley1RM, formatDate, getBestPR, generateCSV,
+  countPRsThisMonth, getRecentlyUpdated, buildChartData, formatDate, getBestPR, generateCSV, totalTrainingVolume,
 } from '../utils/calculations';
 import { CATEGORY_COLORS } from '../data/exercises';
 
@@ -66,10 +66,7 @@ export default function Dashboard({ onNavigate }) {
   const prsThisMonth = countPRsThisMonth(exercises);
   const recent = getRecentlyUpdated(exercises, 5);
   const totalPRs = exercises.reduce((s, e) => s + (e.prs?.length || 0), 0);
-
-  const latestWeight = profile?.weightLog?.length
-    ? profile.weightLog[profile.weightLog.length - 1]
-    : null;
+  const volume = totalTrainingVolume(exercises);
 
   const spotlightExercises = SPOTLIGHT.map(name =>
     exercises.find(e => e.name === name)
@@ -138,10 +135,10 @@ export default function Dashboard({ onNavigate }) {
             icon: '📈',
           },
           {
-            label: 'Body Weight',
-            value: latestWeight ? `${latestWeight.value} ${latestWeight.unit}` : '—',
+            label: 'Logged Volume',
+            value: volume > 0 ? volume.toLocaleString() : '—',
             color: 'text-amber-400',
-            icon: '⚖️',
+            icon: 'VOL',
           },
         ].map(card => (
           <div key={card.label} className="bg-surface-700 rounded-xl p-4 border border-zinc-800/60">
