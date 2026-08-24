@@ -2,3 +2,8 @@ node_modules/
 dist/
 release/
 *.log
+*.tmp
+.env
+.env.local
+.DS_Store
+Thumbs.db
