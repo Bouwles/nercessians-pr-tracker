@@ -118,6 +118,12 @@ export function buildChartData(prs) {
     }));
 }
 
+export function csvCell(value) {
+  const text = String(value ?? '');
+  if (!/[",\n\r]/.test(text)) return text;
+  return `"${text.replace(/"/g, '""')}"`;
+}
+
 /**
  * Generate CSV content for all exercises and their PR history.
  */
@@ -126,16 +132,16 @@ export function generateCSV(exercises) {
   for (const ex of exercises) {
     for (const pr of (ex.prs || [])) {
       rows.push([
-        `"${ex.name}"`,
+        ex.name,
         ex.category,
         pr.date,
         pr.weight,
         pr.weightUnit || 'lbs',
         pr.reps,
         epley1RM(pr.weight, pr.reps),
-        `"${(pr.note || '').replace(/"/g, '""')}"`,
+        pr.note || '',
       ]);
     }
   }
-  return rows.map(r => r.join(',')).join('\n');
+  return rows.map(row => row.map(csvCell).join(',')).join('\n');
 }
