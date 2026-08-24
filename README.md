@@ -1,23 +1,45 @@
 # Nercessian's PR Tracker
 
-A dark-themed desktop app for tracking gym personal records, built with **Electron + React**.
-Log PRs, visualize progress over time, and track body weight changes. Fully offline, no account needed.
+A dark desktop app for tracking gym personal records, body weight, and training progress. Built with Electron, React, Tailwind CSS, Recharts, and local-first storage.
 
----
+![Dashboard preview](docs/assets/pr-tracker-dashboard.svg)
 
-## Features
+## What It Does
 
-- **Exercise Library**: 70+ preloaded exercises across 8 categories. Add custom exercises too.
-- **PR Logging**: Log weight, reps, date, and an optional note for any exercise.
-- **Progress Charts**: Line graphs per exercise showing weight or estimated 1RM.
-- **Dashboard**: Spotlight graphs for top lifts, recent activity, monthly PR count, and body stats.
-- **Body Weight Tracking**: Log body weight over time with its own chart.
-- **Profile Setup**: Name, height, and preferred units.
-- **Search & Filter**: Search by name, filter by category, and sort the library.
-- **CSV Export**: Export all PR data to a `.csv` file.
-- **Fully Offline**: Local storage only. No account, no cloud.
+- Tracks PRs by exercise with date, weight, reps, unit, and notes.
+- Estimates 1RM with the Epley formula.
+- Shows progress charts for weight and estimated 1RM.
+- Highlights recent activity and top lifts on the dashboard.
+- Tracks body weight history separately from lift PRs.
+- Includes a searchable exercise library with built-in and custom exercises.
+- Exports PR history to CSV.
+- Stores everything locally with no account and no cloud dependency.
 
----
+![Exercise detail preview](docs/assets/pr-tracker-exercise-detail.svg)
+
+## Best Way To Use It
+
+Download the portable `.exe` from the latest release and run it directly. You do not need to run `install.bat`, install dependencies, or open a terminal.
+
+If you want to develop the app locally, use the commands below.
+
+## Development Setup
+
+```bash
+npm install
+npm start
+```
+
+## Build A Release
+
+```bash
+npm run build
+```
+
+Build output goes to `release/` and includes:
+
+- an NSIS installer `.exe`
+- a portable Windows `.exe`
 
 ## Tech Stack
 
@@ -29,25 +51,23 @@ Log PRs, visualize progress over time, and track body weight changes. Fully offl
 | Charts | Recharts |
 | Data persistence | electron-store |
 | Bundler | Webpack 5 + Babel |
-| Installer | electron-builder |
+| Release packaging | electron-builder |
 
----
+## Data Storage
 
-## Getting Started
+Data is stored locally by `electron-store` under the app's user-data directory. No workout data leaves your machine unless you export it yourself.
+
+## Troubleshooting
+
+If the development app opens to a blank window, run:
 
 ```bash
-npm install
+npm run webpack:build
 npm start
 ```
 
-## Build Windows Installer
+If packaging fails, delete `release/`, run `npm install`, then run `npm run build` again.
 
-```bash
-npm run build
-```
+## Made By
 
-The `.exe` installer will be output to `release/`.
-
----
-
-## Made by Paul Nercessian
+Paul Nercessian
