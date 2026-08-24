@@ -21,6 +21,7 @@ function CustomTooltip({ active, payload }) {
 export default function Profile() {
   const { profile, updateProfile } = useStore();
   const [showWeightModal, setShowWeightModal] = useState(false);
+  const [backupStatus, setBackupStatus] = useState('');
 
   // Form state — initialised from persisted profile
   const [form, setForm] = useState({
@@ -50,6 +51,13 @@ export default function Profile() {
     });
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
+  }
+
+  async function handleBackupExport() {
+    setBackupStatus('');
+    const result = await window.electronAPI.exportBackup();
+    setBackupStatus(result?.success ? 'Backup exported.' : 'Backup was not exported.');
+    setTimeout(() => setBackupStatus(''), 2400);
   }
 
   // Weight log data for the chart
@@ -88,6 +96,20 @@ export default function Profile() {
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-white">Profile</h1>
           <p className="text-sm text-zinc-500 mt-1">Your personal stats and preferences</p>
+        </div>
+
+        <div className="bg-surface-700 rounded-xl border border-zinc-800/60 p-5 mb-6 flex items-center justify-between">
+          <div>
+            <h2 className="text-sm font-semibold text-white">Data Backup</h2>
+            <p className="text-sm text-zinc-500 mt-1">Save a JSON copy of your profile, exercises, PRs, and body-weight log.</p>
+            {backupStatus && <p className="text-xs text-emerald-400 mt-2">{backupStatus}</p>}
+          </div>
+          <button
+            onClick={handleBackupExport}
+            className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg text-sm font-medium transition-colors border border-zinc-700"
+          >
+            Export Backup
+          </button>
         </div>
 
         {/* Profile form */}
