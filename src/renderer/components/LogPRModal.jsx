@@ -29,6 +29,10 @@ export default function LogPRModal({ exercise, onClose, editEntry }) {
       setError('Date, weight, and reps are required.');
       return;
     }
+    if (form.date > todayStr()) {
+      setError('PR date cannot be in the future.');
+      return;
+    }
     if (parseFloat(form.weight) <= 0 || parseInt(form.reps, 10) <= 0) {
       setError('Weight and reps must be positive numbers.');
       return;
