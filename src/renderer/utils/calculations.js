@@ -101,6 +101,25 @@ export function countPRsThisMonth(exercises) {
   return count;
 }
 
+export function countCurrentPRStreakDays(exercises, now = new Date()) {
+  const loggedDays = new Set();
+  for (const ex of exercises || []) {
+    for (const pr of ex.prs || []) {
+      if (pr.date) loggedDays.add(pr.date);
+    }
+  }
+
+  let streak = 0;
+  const cursor = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  while (true) {
+    const key = cursor.toISOString().slice(0, 10);
+    if (!loggedDays.has(key)) break;
+    streak += 1;
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return streak;
+}
+
 /**
  * Get the N most recently updated exercises (by latest PR date).
  */
