@@ -85,3 +85,20 @@ ipcMain.handle('export:csv', async (event, csvContent, defaultFilename) => {
     return { success: false, error: err.message };
   }
 });
+
+ipcMain.handle('export:backup', async () => {
+  const result = await dialog.showSaveDialog(mainWindow, {
+    title: 'Export PR Tracker Backup',
+    defaultPath: `pr-tracker-backup-${new Date().toISOString().slice(0, 10)}.json`,
+    filters: [{ name: 'JSON Files', extensions: ['json'] }],
+  });
+
+  if (result.canceled || !result.filePath) return { success: false };
+
+  try {
+    fs.writeFileSync(result.filePath, JSON.stringify(store.store, null, 2), 'utf8');
+    return { success: true, filePath: result.filePath };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+});
