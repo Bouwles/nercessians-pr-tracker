@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Nercessian's PR Tracker dashboard preview</title>
+  <desc id="desc">A dark desktop dashboard with PR stats, top lift cards, a progress chart, and recent workout entries.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#09090b"/>
+      <stop offset="1" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#ef4444"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <rect x="42" y="40" width="1116" height="640" rx="24" fill="#0f0f12" stroke="#27272a"/>
+  <rect x="42" y="40" width="226" height="640" rx="24" fill="#141416"/>
+  <rect x="42" y="40" width="226" height="640" rx="24" fill="none" stroke="#27272a"/>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <rect x="78" y="82" width="44" height="44" rx="12" fill="url(#accent)"/>
+    <text x="138" y="103" fill="#fafafa" font-size="17" font-weight="800">PR Tracker</text>
+    <text x="138" y="126" fill="#71717a" font-size="13">Paul</text>
+    <rect x="72" y="178" width="164" height="46" rx="12" fill="#ef444426" stroke="#ef444450"/>
+    <text x="104" y="207" fill="#f87171" font-size="15" font-weight="700">Dashboard</text>
+    <text x="104" y="267" fill="#a1a1aa" font-size="15">Exercises</text>
+    <text x="104" y="323" fill="#a1a1aa" font-size="15">Profile</text>
+    <rect x="72" y="558" width="164" height="72" rx="14" fill="#1a1a1d" stroke="#27272a"/>
+    <text x="92" y="586" fill="#71717a" font-size="12">Total PRs</text>
+    <text x="184" y="586" fill="#f87171" font-size="17" font-weight="800">128</text>
+    <text x="92" y="614" fill="#71717a" font-size="12">Exercises</text>
+    <text x="192" y="614" fill="#fafafa" font-size="17" font-weight="800">96</text>
+    <text x="316" y="102" fill="#fafafa" font-size="31" font-weight="800">Good evening, Paul</text>
+    <text x="316" y="134" fill="#a1a1aa" font-size="16">You logged 12 PRs this month. Keep building.</text>
+    <rect x="944" y="82" width="148" height="42" rx="12" fill="#27272a" stroke="#3f3f46"/>
+    <text x="976" y="109" fill="#e4e4e7" font-size="14" font-weight="700">Export CSV</text>
+    <g>
+      <rect x="316" y="174" width="178" height="104" rx="16" fill="#1a1a1d" stroke="#27272a"/>
+      <text x="338" y="215" fill="#60a5fa" font-size="30" font-weight="800">96</text>
+      <text x="338" y="248" fill="#71717a" font-size="14">Total Exercises</text>
+      <rect x="516" y="174" width="178" height="104" rx="16" fill="#1a1a1d" stroke="#27272a"/>
+      <text x="538" y="215" fill="#f87171" font-size="30" font-weight="800">128</text>
+      <text x="538" y="248" fill="#71717a" font-size="14">PRs Logged</text>
+      <rect x="716" y="174" width="178" height="104" rx="16" fill="#1a1a1d" stroke="#27272a"/>
+      <text x="738" y="215" fill="#34d399" font-size="30" font-weight="800">12</text>
+      <text x="738" y="248" fill="#71717a" font-size="14">This Month</text>
+      <rect x="916" y="174" width="178" height="104" rx="16" fill="#1a1a1d" stroke="#27272a"/>
+      <text x="938" y="215" fill="#fbbf24" font-size="30" font-weight="800">181</text>
+      <text x="938" y="248" fill="#71717a" font-size="14">Body Weight</text>
+    </g>
+    <text x="316" y="332" fill="#a1a1aa" font-size="14" font-weight="800" letter-spacing="2">TOP LIFTS</text>
+    <rect x="316" y="354" width="358" height="178" rx="18" fill="#1a1a1d" stroke="#27272a"/>
+    <text x="344" y="392" fill="#fafafa" font-size="18" font-weight="800">Bench Press</text>
+    <path d="M344 486 C396 454 420 466 466 426 C512 382 552 414 624 374" fill="none" stroke="#ef4444" stroke-width="5"/>
+    <circle cx="624" cy="374" r="7" fill="#ef4444"/>
+    <text x="556" y="394" fill="#fafafa" font-size="28" font-weight="800">245</text>
+    <text x="608" y="394" fill="#71717a" font-size="13">lbs</text>
+    <rect x="698" y="354" width="396" height="178" rx="18" fill="#1a1a1d" stroke="#27272a"/>
+    <text x="726" y="392" fill="#fafafa" font-size="18" font-weight="800">Recent Activity</text>
+    <g fill="#a1a1aa" font-size="14">
+      <text x="726" y="434">Squat (Barbell)</text><text x="984" y="434" fill="#fafafa" font-weight="800">315 lbs x 3</text>
+      <text x="726" y="474">Deadlift</text><text x="984" y="474" fill="#fafafa" font-weight="800">405 lbs x 1</text>
+      <text x="726" y="514">Overhead Press</text><text x="984" y="514" fill="#fafafa" font-weight="800">135 lbs x 5</text>
+    </g>
+  </g>
+</svg>
