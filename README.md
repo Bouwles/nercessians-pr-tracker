@@ -19,7 +19,7 @@ A dark desktop app for tracking gym personal records, body weight, and training 
 
 ## Best Way To Use It
 
-Download the portable `.exe` from the latest release and run it directly. You do not need to run `install.bat`, install dependencies, or open a terminal.
+Download the portable Windows release, extract it if it is provided as a `.zip`, and run `Nercessian's PR Tracker.exe`. You do not need to run `install.bat`, install dependencies, or open a terminal.
 
 If you want to develop the app locally, use the commands below.
 
