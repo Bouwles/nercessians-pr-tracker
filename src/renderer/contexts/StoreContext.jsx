@@ -66,7 +66,10 @@ export function StoreProvider({ children }) {
 
   // ── Exercises ────────────────────────────────────────────────────────────
   const addExercise = useCallback(async (name, category) => {
-    const newEx = { id: uuidv4(), name, category, isCustom: true, prs: [] };
+    const trimmedName = String(name || '').trim();
+    const exists = exercises.some(ex => ex.name.toLowerCase() === trimmedName.toLowerCase());
+    if (exists) throw new Error('An exercise with that name already exists.');
+    const newEx = { id: uuidv4(), name: trimmedName, category, isCustom: true, prs: [] };
     const updated = [...exercises, newEx];
     return saveExercises(updated);
   }, [exercises, saveExercises]);
