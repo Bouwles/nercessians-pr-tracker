@@ -222,6 +222,12 @@ export default function Dashboard({ onNavigate }) {
           <p className="text-sm text-zinc-500 max-w-xs">
             Head to Exercises, pick a lift, and log your first PR to get started.
           </p>
+          <button
+            onClick={() => onNavigate('exercises')}
+            className="mt-5 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-bold transition-colors"
+          >
+            Browse Exercises
+          </button>
         </div>
       )}
     </div>
