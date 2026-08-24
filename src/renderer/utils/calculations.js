@@ -120,6 +120,22 @@ export function countCurrentPRStreakDays(exercises, now = new Date()) {
   return streak;
 }
 
+export function countPRsInLastDays(exercises, days = 7, now = new Date()) {
+  const end = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(end);
+  start.setDate(start.getDate() - Math.max(days - 1, 0));
+
+  let count = 0;
+  for (const ex of exercises || []) {
+    for (const pr of ex.prs || []) {
+      if (!pr.date) continue;
+      const date = new Date(`${pr.date}T00:00:00`);
+      if (date >= start && date <= end) count += 1;
+    }
+  }
+  return count;
+}
+
 /**
  * Get the N most recently updated exercises (by latest PR date).
  */
