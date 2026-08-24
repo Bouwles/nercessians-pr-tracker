@@ -11,32 +11,33 @@ export function StoreProvider({ children }) {
   const [exercises, setExercisesState] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const reloadData = useCallback(async () => {
+    const data = await window.electronAPI.getAllData();
+
+    setProfileState(data.profile || null);
+
+    if (data.exercises && data.exercises.length > 0) {
+      setExercisesState(data.exercises);
+      return data;
+    }
+
+    // First launch — seed with default exercises
+    const defaults = DEFAULT_EXERCISES.map(ex => ({
+      id: uuidv4(),
+      name: ex.name,
+      category: ex.category,
+      isCustom: false,
+      prs: [],
+    }));
+    setExercisesState(defaults);
+    await window.electronAPI.setData('exercises', defaults);
+    return { ...data, exercises: defaults };
+  }, []);
+
   // ── Load persisted data on mount ─────────────────────────────────────────
   useEffect(() => {
-    async function load() {
-      const data = await window.electronAPI.getAllData();
-
-      if (data.profile) setProfileState(data.profile);
-
-      if (data.exercises && data.exercises.length > 0) {
-        setExercisesState(data.exercises);
-      } else {
-        // First launch — seed with default exercises
-        const defaults = DEFAULT_EXERCISES.map(ex => ({
-          id: uuidv4(),
-          name: ex.name,
-          category: ex.category,
-          isCustom: false,
-          prs: [],
-        }));
-        setExercisesState(defaults);
-        await window.electronAPI.setData('exercises', defaults);
-      }
-
-      setLoading(false);
-    }
-    load();
-  }, []);
+    reloadData().finally(() => setLoading(false));
+  }, [reloadData]);
 
   // ── Helper: persist exercises ────────────────────────────────────────────
   const saveExercises = useCallback(async (updated) => {
@@ -125,6 +126,7 @@ export function StoreProvider({ children }) {
       logPR,
       deletePR,
       editPR,
+      reloadData,
     }}>
       {children}
     </StoreContext.Provider>
