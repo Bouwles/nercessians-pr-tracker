@@ -13,6 +13,8 @@ export const DEFAULT_EXERCISES = [
   { name: 'Chest Press Machine',         category: 'Chest' },
   { name: 'Pec Deck',                    category: 'Chest' },
   { name: 'Dips (Chest)',                category: 'Chest' },
+  { name: 'Paused Bench Press',          category: 'Chest' },
+  { name: 'Close Grip Push-Up',          category: 'Chest' },
 
   // ─── Back ─────────────────────────────────────────────────────────────────
   { name: 'Deadlift',                    category: 'Back' },
@@ -26,6 +28,8 @@ export const DEFAULT_EXERCISES = [
   { name: 'Face Pulls',                  category: 'Back' },
   { name: 'Straight Arm Pulldown',       category: 'Back' },
   { name: 'Hyperextensions',             category: 'Back' },
+  { name: 'Chest Supported Row',         category: 'Back' },
+  { name: 'Meadows Row',                 category: 'Back' },
 
   // ─── Shoulders ────────────────────────────────────────────────────────────
   { name: 'Overhead Press (Barbell)',    category: 'Shoulders' },
@@ -38,6 +42,8 @@ export const DEFAULT_EXERCISES = [
   { name: 'Upright Row',                 category: 'Shoulders' },
   { name: 'Shrugs',                      category: 'Shoulders' },
   { name: 'Machine Shoulder Press',      category: 'Shoulders' },
+  { name: 'Seated Lateral Raise',        category: 'Shoulders' },
+  { name: 'Landmine Press',              category: 'Shoulders' },
 
   // ─── Arms ─────────────────────────────────────────────────────────────────
   { name: 'Barbell Curl',                category: 'Arms' },
@@ -50,6 +56,8 @@ export const DEFAULT_EXERCISES = [
   { name: 'Close Grip Bench Press',      category: 'Arms' },
   { name: 'Tricep Dips',                 category: 'Arms' },
   { name: 'Overhead Tricep Extension',   category: 'Arms' },
+  { name: 'Incline Dumbbell Curl',       category: 'Arms' },
+  { name: 'Bayesian Cable Curl',         category: 'Arms' },
 
   // ─── Legs ─────────────────────────────────────────────────────────────────
   { name: 'Squat (Barbell)',             category: 'Legs' },
@@ -64,6 +72,8 @@ export const DEFAULT_EXERCISES = [
   { name: 'Hack Squat',                  category: 'Legs' },
   { name: 'Goblet Squat',                category: 'Legs' },
   { name: 'Sumo Deadlift',               category: 'Legs' },
+  { name: 'Hip Thrust',                  category: 'Legs' },
+  { name: 'Seated Leg Curl',             category: 'Legs' },
 
   // ─── Core ─────────────────────────────────────────────────────────────────
   { name: 'Plank',                       category: 'Core' },
@@ -74,6 +84,7 @@ export const DEFAULT_EXERCISES = [
   { name: 'Russian Twists',              category: 'Core' },
   { name: 'Decline Sit-Ups',             category: 'Core' },
   { name: 'Dragon Flag',                 category: 'Core' },
+  { name: 'Pallof Press',                category: 'Core' },
 
   // ─── Olympic / Powerlifting ───────────────────────────────────────────────
   { name: 'Clean and Jerk',              category: 'Olympic/Powerlifting' },
@@ -84,6 +95,7 @@ export const DEFAULT_EXERCISES = [
   { name: 'Pause Squat',                 category: 'Olympic/Powerlifting' },
   { name: 'Deficit Deadlift',            category: 'Olympic/Powerlifting' },
   { name: 'Rack Pull',                   category: 'Olympic/Powerlifting' },
+  { name: 'Tempo Squat',                 category: 'Olympic/Powerlifting' },
 
   // ─── Cardio ───────────────────────────────────────────────────────────────
   { name: 'Running (Treadmill)',         category: 'Cardio' },
