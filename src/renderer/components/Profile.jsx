@@ -1,5 +1,5 @@
 // Profile page — name, height, weight units, body weight history
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts';
@@ -31,6 +31,15 @@ export default function Profile() {
     weightUnit: profile?.weightUnit || 'lbs',
   });
   const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setForm({
+      name: profile?.name || '',
+      heightValue: profile?.height?.value || '',
+      heightUnit: profile?.height?.unit || 'cm',
+      weightUnit: profile?.weightUnit || 'lbs',
+    });
+  }, [profile]);
 
   function set(key, value) {
     setForm(f => ({ ...f, [key]: value }));
