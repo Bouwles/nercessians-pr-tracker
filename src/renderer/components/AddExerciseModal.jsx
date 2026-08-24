@@ -17,11 +17,16 @@ export default function AddExerciseModal({ onClose, onAdded }) {
       setError('Exercise name is required.');
       return;
     }
-    setSaving(true);
-    const updated = await addExercise(trimmed, category);
-    setSaving(false);
-    onAdded?.(updated);
-    onClose();
+    try {
+      setSaving(true);
+      const updated = await addExercise(trimmed, category);
+      onAdded?.(updated);
+      onClose();
+    } catch (err) {
+      setError(err.message || 'Could not add exercise.');
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
