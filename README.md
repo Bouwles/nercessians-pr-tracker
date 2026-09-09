@@ -1,5 +1,10 @@
 # Nercessian's PR Tracker
 
+[![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge&logo=electron&logoColor=white)](#)
+[![License](https://img.shields.io/github/license/Bouwles/nercessians-pr-tracker?style=for-the-badge&color=16a34a)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/Bouwles/nercessians-pr-tracker?style=for-the-badge&color=16a34a)](https://github.com/Bouwles/nercessians-pr-tracker/commits)
+
+
 A dark desktop app for tracking gym personal records, body weight, and training progress. Built with Electron, React, Tailwind CSS, Recharts, and local-first storage.
 
 ![Dashboard preview](docs/assets/pr-tracker-dashboard.svg)
