@@ -76,3 +76,7 @@ If packaging fails, delete `release/`, run `npm install`, then run `npm run buil
 ## Made By
 
 Paul Nercessian
+
+## License
+
+MIT — see [LICENSE](LICENSE).
